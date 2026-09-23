@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -e
+
+cd /opt
+
+git clone -b dev https://github.com/AllenNeuralDynamics/GIAnT-MATLAB.git
+cd GIAnT-MATLAB
+git checkout 558c1693888cc009a19b2ea1cbb86e24698b8840  
+cd ..
+
+git clone https://github.com/flatironinstitute/NoRMCorre.git
+
+git clone https://github.com/rharkes/Fast_Tiff_Write.git
+cd Fast_Tiff_Write
+git checkout ddd50c3286ff5b013d1f0478e8a5bd0d60978a75
+cd ..
