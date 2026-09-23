@@ -1,5 +1,71 @@
 #!/usr/bin/env bash
-set -ex
+set -euo pipefail
 
-# This is the master script for the capsule. When you click "Reproducible Run", the code in this file will execute.
-python -u run_capsule.py "$@"
+# Parse named parameters and build MATLAB argument string
+# Handles values with spaces and converts numeric/boolean parameters correctly
+matlab_args=""
+
+# StripRegistration parameters
+strip_numeric="maxshift clipShift removeLines ds_time frameRate"
+strip_logical="saveTif"
+
+# SILo parameters
+silo_numeric="sigma_px nmfIter dXY photonScale lambda phi denoiseWindow_s \
+baselineWindow_Glu_s baselineWindow_Ca_s activityChannel tau_s tau2_s VIF \
+peakth minPeakDistance motionThresh nanThresh discardInitial_s"
+
+# Taken by both StripRegistration and SILo
+shared_numeric="nWorkers"
+
+numeric_params="${strip_numeric} ${silo_numeric} ${shared_numeric}"
+logical_params="${strip_logical}"
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --*=*)
+            # Handle --name=value format
+            param="${1#--}"
+            param_name="${param%%=*}"
+            param_value="${param#*=}"
+            shift
+            ;;
+        --*)
+            # Handle --name value format (space-separated)
+            param_name="${1#--}"
+            shift
+            if [[ $# -gt 0 ]]; then
+                param_value="$1"
+                shift
+            else
+                continue
+            fi
+            ;;
+        *)
+            shift
+            continue
+            ;;
+    esac
+
+    # Check if parameter is numeric - pass without quotes
+    if echo "$numeric_params" | grep -qw "$param_name"; then
+        matlab_args="${matlab_args}, '${param_name}', ${param_value}"
+    # Check if parameter is logical - convert and pass without quotes
+    elif echo "$logical_params" | grep -qw "$param_name"; then
+        # Convert to MATLAB logical
+        if [[ "$param_value" == "true" || "$param_value" == "1" ]]; then
+            matlab_args="${matlab_args}, '${param_name}', true"
+        else
+            matlab_args="${matlab_args}, '${param_name}', false"
+        fi
+    # String parameter - escape and quote
+    else
+        param_value="${param_value//\'/\'\'}"
+        matlab_args="${matlab_args}, '${param_name}', '${param_value}'"
+    fi
+done
+
+# Build MATLAB command
+matlab_cmd="run_capsule(${matlab_args#, });"
+
+# Execute MATLAB with the built command
+matlab -batch "$matlab_cmd"
