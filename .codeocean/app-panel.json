@@ -1,0 +1,295 @@
+{
+	"version": 1,
+	"named_parameters": true,
+	"categories": [
+		{
+			"id": "lszgm1xz7q6xRhrV",
+			"name": "Basic Settings",
+			"icon": "📂"
+		},
+		{
+			"id": "q7JJvwEWV8HmfXV0",
+			"name": "StripRegistration Parameters",
+			"icon": "📝"
+		},
+		{
+			"id": "r3MuVJm2CRdtqCGr",
+			"name": "SILo Parameters",
+			"icon": "🔆"
+		}
+	],
+	"parameters": [
+		{
+			"id": "8F1C1Tt2kFnKkL0q",
+			"category": "lszgm1xz7q6xRhrV",
+			"name": "Input Directory",
+			"param_name": "inputDir",
+			"description": "Path to the directory containing data files (.h5, .tif, .tiff)",
+			"type": "text",
+			"value_type": "string",
+			"default_value": "/data/"
+		},
+		{
+			"id": "P4prMUQG4SR8Ygf6",
+			"category": "lszgm1xz7q6xRhrV",
+			"name": "Result Directory",
+			"param_name": "resultDir",
+			"description": "Path to the directory where results will be saved",
+			"type": "text",
+			"value_type": "string",
+			"default_value": "/results/"
+		},
+		{
+			"id": "INQGgu0s6D9Lq1FS",
+			"category": "q7JJvwEWV8HmfXV0",
+			"name": "Max Shift",
+			"param_name": "maxshift",
+			"description": "Maximum shift value for registration (default: 50)",
+			"type": "text",
+			"value_type": "integer",
+			"default_value": "50"
+		},
+		{
+			"id": "RbCqWxkeXgPH1XYW",
+			"category": "q7JJvwEWV8HmfXV0",
+			"name": "Clip Shift",
+			"param_name": "clipShift",
+			"description": "Clipping value for shifts (default: 10)",
+			"type": "text",
+			"value_type": "integer",
+			"default_value": "10"
+		},
+		{
+			"id": "pHTZqMlBL3c75mKn",
+			"category": "q7JJvwEWV8HmfXV0",
+			"name": "Remove Lines",
+			"param_name": "removeLines",
+			"description": "Number of lines to remove (default: 4)",
+			"help_text": "Removes first few horizontal scan lines of noise, if needed",
+			"type": "text",
+			"value_type": "integer",
+			"default_value": "4"
+		},
+		{
+			"id": "50s0BOFiOGYX1xoI",
+			"category": "q7JJvwEWV8HmfXV0",
+			"name": "2x Downsampling Factor",
+			"param_name": "ds_time",
+			"description": "Log base 2 of the temporal downsampling factor (default: 1, means 2^1 = 2x downsampling)",
+			"type": "text",
+			"value_type": "integer",
+			"default_value": "1"
+		},
+		{
+			"id": "hjJnXgZ40NTtw6zw",
+			"category": "q7JJvwEWV8HmfXV0",
+			"name": "Frame Rate",
+			"param_name": "frameRate",
+			"description": "Frame rate in Hz (default: 0 for auto-detect)",
+			"type": "text",
+			"value_type": "number",
+			"default_value": "0"
+		},
+		{
+			"id": "k7QBgZRR9BUK2MAF",
+			"category": "q7JJvwEWV8HmfXV0",
+			"name": "Save Tif?",
+			"param_name": "saveTif",
+			"description": "Save motion corrected movie as a tif?",
+			"type": "text",
+			"value_type": "integer",
+			"default_value": "0",
+			"minimum": 0,
+			"maximum": 1
+		},
+		{
+			"id": "SMtrGi91vhvJTbhk",
+			"category": "r3MuVJm2CRdtqCGr",
+			"name": "dXY",
+			"param_name": "dXY",
+			"help_text": "how large sources can be (radius), pixels",
+			"type": "text",
+			"value_type": "number",
+			"default_value": "2"
+		},
+		{
+			"id": "AH6pSpqKCYteB4VM",
+			"category": "r3MuVJm2CRdtqCGr",
+			"name": "photonScale",
+			"param_name": "photonScale",
+			"help_text": "roughly the single-photon amplitude. Leave empty to use default/estimate from data.",
+			"type": "text",
+			"value_type": "number",
+			"default_value": "0"
+		},
+		{
+			"id": "0yEGJVRD7EBAMZoN",
+			"category": "r3MuVJm2CRdtqCGr",
+			"name": "sigma_px",
+			"param_name": "sigma_px",
+			"help_text": "Estimated radius of the PSF (gaussian sigma)",
+			"type": "text",
+			"value_type": "number",
+			"default_value": "0.931"
+		},
+		{
+			"id": "tNZsjNlcHS29i8lz",
+			"category": "r3MuVJm2CRdtqCGr",
+			"name": "nmfIter",
+			"param_name": "nmfIter",
+			"help_text": "number of iterations of NMF refinement",
+			"type": "text",
+			"value_type": "number",
+			"default_value": "2"
+		},
+		{
+			"id": "Qoq6nEKxb0bzaBDn",
+			"category": "r3MuVJm2CRdtqCGr",
+			"name": "lambda",
+			"param_name": "lambda",
+			"help_text": "L1 regularizer for source extraction",
+			"type": "text",
+			"value_type": "number",
+			"default_value": "0.9"
+		},
+		{
+			"id": "pj1r2iBfqdRLyJSh",
+			"category": "r3MuVJm2CRdtqCGr",
+			"name": "phi",
+			"param_name": "phi",
+			"help_text": "parameter for how much to relax L1 regularization during debiasing (0=no regularization, 1=full regularization)",
+			"type": "text",
+			"value_type": "number",
+			"default_value": "0.374"
+		},
+		{
+			"id": "xYz24kWDg0W1RpRn",
+			"category": "r3MuVJm2CRdtqCGr",
+			"name": "denoiseWindow_s",
+			"param_name": "denoiseWindow_s",
+			"help_text": "the timescale on which signals can be smoothed when denoising, seconds",
+			"type": "text",
+			"value_type": "number",
+			"default_value": "0.467"
+		},
+		{
+			"id": "sHpF2YRrG4GnetoG",
+			"category": "r3MuVJm2CRdtqCGr",
+			"name": "baselineWindow_Glu_s",
+			"param_name": "baselineWindow_Glu_s",
+			"help_text": "timescale for calculating F0 in glutamate channel, seconds",
+			"type": "text",
+			"value_type": "number",
+			"default_value": "3.58"
+		},
+		{
+			"id": "04zrryHcbFV5xkp2",
+			"category": "r3MuVJm2CRdtqCGr",
+			"name": "baselineWindow_Ca_s",
+			"param_name": "baselineWindow_Ca_s",
+			"help_text": "timescale for calculating F0 in second channel, seconds (if applicable, typically for simultaneous Glu + Ca imaging)",
+			"type": "text",
+			"value_type": "number",
+			"default_value": "4"
+		},
+		{
+			"id": "lUkDTJPOr5ded88i",
+			"category": "r3MuVJm2CRdtqCGr",
+			"name": "activityChannel",
+			"param_name": "activityChannel",
+			"help_text": "the channel of the original tiff image that contains the glutamate signal",
+			"type": "text",
+			"value_type": "integer",
+			"default_value": "1"
+		},
+		{
+			"id": "VvaJtn803sOI3piP",
+			"category": "r3MuVJm2CRdtqCGr",
+			"name": "tau_s",
+			"param_name": "tau_s",
+			"help_text": "decay time constant of glutamate signal",
+			"type": "text",
+			"value_type": "number",
+			"default_value": "0.024"
+		},
+		{
+			"id": "Aglc6spQq6oSvblg",
+			"category": "r3MuVJm2CRdtqCGr",
+			"name": "tau2_s",
+			"param_name": "tau2_s",
+			"help_text": "decay time constant of 2nd channel signal at synapses (usually spine calcium)",
+			"type": "text",
+			"value_type": "number",
+			"default_value": "0.15"
+		},
+		{
+			"id": "vSMGJWiSFro84jh4",
+			"category": "r3MuVJm2CRdtqCGr",
+			"name": "VIF",
+			"param_name": "VIF",
+			"help_text": "variance inflation factor for stdIM estimate",
+			"type": "text",
+			"value_type": "number",
+			"default_value": "1.67"
+		},
+		{
+			"id": "NfVwSBA7XgSCiaBT",
+			"category": "r3MuVJm2CRdtqCGr",
+			"name": "peakth",
+			"param_name": "peakth",
+			"help_text": "peak identification threshold (actIM z-score)",
+			"type": "text",
+			"value_type": "number",
+			"default_value": "16.2"
+		},
+		{
+			"id": "dfYwbDDyxSVzlCCR",
+			"category": "r3MuVJm2CRdtqCGr",
+			"name": "minPeakDistance",
+			"param_name": "minPeakDistance",
+			"help_text": "minimum Chebyshev distance between peaks (pixels); 1 = adjacent peaks allowed",
+			"type": "text",
+			"value_type": "number",
+			"default_value": "0"
+		},
+		{
+			"id": "LPDG6tsGHkKLw1ZG",
+			"category": "r3MuVJm2CRdtqCGr",
+			"name": "motionThresh",
+			"param_name": "motionThresh",
+			"help_text": "decrease this to be more stringent on motion correction when censoring frames",
+			"type": "text",
+			"value_type": "number",
+			"default_value": "2"
+		},
+		{
+			"id": "OCki9ZiZUWYD5eOG",
+			"category": "r3MuVJm2CRdtqCGr",
+			"name": "nanThresh",
+			"param_name": "nanThresh",
+			"help_text": "Max fraction of samples that can be NaN for including a pixel in analysis",
+			"type": "text",
+			"value_type": "number",
+			"default_value": "0.57"
+		},
+		{
+			"id": "VsIBRcA2POgM0QuV",
+			"category": "r3MuVJm2CRdtqCGr",
+			"name": "discardInitial_s",
+			"param_name": "discardInitial_s",
+			"help_text": "time in seconds to remove from analysis at the start of each trial, to account for warmup",
+			"type": "text",
+			"value_type": "number",
+			"default_value": "0"
+		},
+		{
+			"id": "Am0NO0qJz4j8CbiK",
+			"name": "Number of Workers",
+			"param_name": "nWorkers",
+			"description": "Number of parallel workers (default: 1)",
+			"type": "text",
+			"value_type": "integer",
+			"default_value": "1"
+		}
+	]
+}
