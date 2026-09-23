@@ -139,6 +139,10 @@ for i = 1:numel(siloLogicalFields)
     end
 end
 
+if siloParams.photonScale == 0
+    siloParams.photonScale = []
+end
+
 % Capsule-level overrides: fixed properties of this pipeline rather than
 % tunables. Set unconditionally AFTER the loops above, so they win over
 % anything the caller passed for these four names.
