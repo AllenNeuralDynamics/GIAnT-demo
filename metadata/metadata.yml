@@ -1,0 +1,16 @@
+metadata_version: 1
+name: Glutamate Imaging Analysis Toolbox (GIAnT) Demo Development
+description: This is a capsule to run the Glutamate Imaging Analysis Toolbox (GIAnT)
+  on two example datasets (one from a real experiment and one simulated). The datasets
+  are from those used in the GIAnT paper, but have been reduced to approximately 20%
+  of the length in time.
+authors:
+- name: Michael Xie
+  affiliations:
+  - name: Johns Hopkins University
+- name: Johannes Friedrich
+  affiliations:
+  - name: Allen Institute
+corresponding_contributor:
+  name: Kaspar Podgorski
+  email: kaspar.podgorski@alleninstitute.org
