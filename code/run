@@ -69,3 +69,5 @@ matlab_cmd="run_capsule(${matlab_args#, });"
 
 # Execute MATLAB with the built command
 matlab -batch "$matlab_cmd"
+
+python3 visualization.py
