@@ -1,8 +1,8 @@
 metadata_version: 1
 name: Glutamate Imaging Analysis Toolbox (GIAnT) Demo
 description: This is a capsule to run the Glutamate Imaging Analysis Toolbox (GIAnT)
-  on two example datasets (one simulated and one from a real experiment) and produce 
-  some visualizations of the results. The datasets are from those used in the GIAnT 
+  on two example datasets (one simulated and one from a real experiment) and produce
+  some visualizations of the results. The datasets are from those used in the GIAnT
   paper but have been reduced to approximately 20% of the length in time.
 authors:
 - name: Michael Xie
