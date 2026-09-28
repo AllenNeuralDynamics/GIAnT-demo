@@ -531,7 +531,6 @@ def make_trace_figure(
     fixed ``start_s``-``start_s + window_s`` window (like the paper's
     Figure 4b/c) rather than the full ~78 s recording, which ``evaluate.py``'s
     own ``plot_traces`` shows and which is unreadable at this frame count.
-    Traces are sorted by SNR (highest first).
 
     When ``groundtruth_path``/``matched_gt`` (from ``make_activity_roi_figure``)
     are given, only matched (true-positive) ROIs are shown, each with its
@@ -598,7 +597,7 @@ def make_trace_figure(
     plt.xlabel("Time [s]")
     plt.suptitle(
         f"{trace_key.removeprefix('dF_')} traces, {window_s:.0f} s window at "
-        f"t={start * frame_time:.1f} s (sorted by SNR)",
+        f"t={start * frame_time:.1f} s",
         y=1.0,
     )
     plt.tight_layout(pad=0.2)
